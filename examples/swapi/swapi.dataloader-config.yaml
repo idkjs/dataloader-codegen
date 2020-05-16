@@ -7,6 +7,11 @@ typings:
             type ResourcesType = SWAPIClientlibTypes;
 
 resources:
+    getFilms:
+        docsLink: https://swapi.dev/documentation#films
+        isBatchResource: true
+        batchKey: film_ids
+        newKey: film_id
     getPlanets:
         docsLink: https://swapi.dev/documentation#planets
         isBatchResource: true
@@ -22,6 +27,16 @@ resources:
         isBatchResource: true
         batchKey: vehicle_ids
         newKey: vehicle_id
+    getStarships:
+        docsLink: https://swapi.dev/documentation#starships
+        isBatchResource: true
+        batchKey: starship_ids
+        newKey: starship_id
+    getSpecies:
+        docsLink: https://swapi.dev/documentation#species
+        isBatchResource: true
+        batchKey: species_ids
+        newKey: species_id
     getRoot:
         docsLink: https://swapi.dev/documentation#root
         isBatchResource: false

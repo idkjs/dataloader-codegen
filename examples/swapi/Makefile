@@ -1,3 +1,9 @@
+
+default: swapi-loaders.js build run
+
+run: build
+	node ./build/swapi-server.js
+
 node_modules: package.json
 	yarn
 

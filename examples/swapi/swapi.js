@@ -47,6 +47,20 @@ export type SWAPI_Vehicle = $ReadOnly<{|
     name: string,
     key: string,
 |}>;
+export type SWAPI_Species = $ReadOnly<{|
+    name: string,
+    key: string,
+|}>;
+export type SWAPI_Starship = $ReadOnly<{|
+    name: string,
+    key: string,
+|}>;
+export type SWAPI_Film = $ReadOnly<{|
+    name: string,
+    director: string,
+    created: string,
+    key: string,
+|}>;
 
 type SWAPI_Root = $ReadOnly<{|
     people: string,
@@ -61,6 +75,9 @@ export type SWAPIClientlibTypes = {|
     getPlanets: ({| planet_ids: $ReadOnlyArray<number> |}) => Promise<$ReadOnlyArray<SWAPI_Planet>>,
     getPeople: ({| people_ids: $ReadOnlyArray<number> |}) => Promise<$ReadOnlyArray<SWAPI_Person>>,
     getVehicles: ({| vehicle_ids: $ReadOnlyArray<number> |}) => Promise<$ReadOnlyArray<SWAPI_Vehicle>>,
+    getSpecies: ({| species_ids: $ReadOnlyArray<number> |}) => Promise<$ReadOnlyArray<SWAPI_Species>>,
+    getStarships: ({| starship_ids: $ReadOnlyArray<number> |}) => Promise<$ReadOnlyArray<SWAPI_Starship>>,
+    getFilms: ({| film_ids: $ReadOnlyArray<number> |}) => Promise<$ReadOnlyArray<SWAPI_Film>>,
     getRoot: ({||}) => Promise<SWAPI_Root>,
 |};
 
@@ -72,6 +89,12 @@ module.exports = function(): SWAPIClientlibTypes {
             Promise.all(people_ids.map(id => fetch(url.resolve(SWAPI_URL, `people/${id}`)).then(res => res.json()))),
         getVehicles: ({ vehicle_ids }) =>
             Promise.all(vehicle_ids.map(id => fetch(url.resolve(SWAPI_URL, `vehicles/${id}`)).then(res => res.json()))),
+        getSpecies: ({ species_ids }) =>
+            Promise.all(species_ids.map(id => fetch(url.resolve(SWAPI_URL, `species/${id}`)).then(res => res.json()))),
+        getStarships: ({ starship_ids }) =>
+            Promise.all(starship_ids.map(id => fetch(url.resolve(SWAPI_URL, `starships/${id}`)).then(res => res.json()))),
+        getFilms: ({ film_ids }) =>
+            Promise.all(film_ids.map(id => fetch(url.resolve(SWAPI_URL, `films/${id}`)).then(res => res.json()))),
         getRoot: ({}) => fetch(SWAPI_URL).then(res => res.json()),
     };
 };
