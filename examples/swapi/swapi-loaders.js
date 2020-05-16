@@ -143,7 +143,7 @@ export type LoadersType = $ReadOnly<{|
         }
       >,
       ...{|
-        person_id: $ElementType<
+        people_id: $ElementType<
           $PropertyType<
             $Call<ExtractArg, [$PropertyType<ResourcesType, "getPeople">]>,
             "people_ids"
@@ -891,7 +891,7 @@ export default function getLoaders(
           }
         >,
         ...{|
-          person_id: $ElementType<
+          people_id: $ElementType<
             $PropertyType<
               $Call<ExtractArg, [$PropertyType<ResourcesType, "getPeople">]>,
               "people_ids"
@@ -924,7 +924,7 @@ export default function getLoaders(
        *   "docsLink": "https://swapi.dev/documentation#people",
        *   "isBatchResource": true,
        *   "batchKey": "people_ids",
-       *   "newKey": "person_id"
+       *   "newKey": "people_id"
        * }
        * ```
        */
@@ -1001,7 +1001,7 @@ export default function getLoaders(
          *
          * We'll refer to each element in the group as a "request ID".
          */
-        const requestGroups = partitionItems("person_id", keys);
+        const requestGroups = partitionItems("people_id", keys);
 
         // Map the request groups to a list of Promises - one for each request
         const groupedResults = await Promise.all(
@@ -1019,8 +1019,8 @@ export default function getLoaders(
             // @see https://github.com/Yelp/dataloader-codegen/issues/56
             const resourceArgs = [
               {
-                ..._.omit(requests[0], "person_id"),
-                ["people_ids"]: requests.map(k => k["person_id"])
+                ..._.omit(requests[0], "people_id"),
+                ["people_ids"]: requests.map(k => k["people_id"])
               }
             ];
 

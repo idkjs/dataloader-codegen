@@ -22,6 +22,7 @@ export type SWAPI_Planet = $ReadOnly<{|
     created: string,
     edited: string,
     url: string,
+    key: string,
 |}>;
 
 export type SWAPI_Person = $ReadOnly<{|
@@ -45,10 +46,25 @@ export type SWAPI_Person = $ReadOnly<{|
 
 export type SWAPI_Vehicle = $ReadOnly<{|
     name: string,
+    model: string,
     key: string,
 |}>;
 export type SWAPI_Species = $ReadOnly<{|
     name: string,
+    classification: string,
+    designation: string,
+    average_height: string,
+    skin_colors: string,
+    hair_colors: string,
+    eye_colors: string,
+    average_lifespan: string,
+    homeworld: string,
+    language: string,
+    people: $ReadOnlyArray<SWAPI_Person>,
+    films: $ReadOnlyArray<SWAPI_Film>,
+    created: string,
+    edited: string,
+    url: string,
     key: string,
 |}>;
 export type SWAPI_Starship = $ReadOnly<{|
